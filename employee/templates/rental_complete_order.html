@@ -1,0 +1,135 @@
+<%inherit file="base.htm" />
+
+<%block name="content">
+<h1>The payment has been succesfully processed!</h1>
+<br>
+<h3>Your Rentals</h3>
+
+
+<div class="row">
+	
+		<div class="span12">
+			
+			<table class="basket-table">
+				<thead>
+					<tr>
+						<th colspan="2">Item</th>
+						<th>Daily Rate</th>
+						<th>Days Rented</th>
+						<th>Subtotal</th>
+						<th>Late Fees</th>
+						<th>Damage Fees</th>
+						<th colspan="2">Total</th>
+					</tr>
+				</thead>
+				%for product in unpaid_rentals:
+				<tbody>
+					<tr>
+						<td class="image"><a href="#"><img src="${ STATIC_URL}${product.serialized.catalogID.imagePath}" alt="" /></a></td>
+						<td class="title"><a href="#">${product.serialized.catalogID.name}</a></td>
+						<td class="price">$${product.daily_rate}</td>
+						<td class="price">x ${product.days_to_rent}</td>						
+						<td class="price">$${product.before_fees}</td>
+						<td class="price">$${product.late_fees}</td>
+						<td class="price">$${product.damage_fees}</td>						
+						<td class="total">$${product.before_fees + product.late_fees + product.damage_fees}</td>
+						
+					</tr>
+					
+				</tbody>
+				%endfor
+			</table>
+			
+			</div>
+			</div>
+
+
+
+<h3>Your Billing Option</h3>
+	<table class = "table table-striped table-hover">
+		<thead>
+			<tr class="success">
+					<th>Name on Card</th>
+					<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+
+				<tr class="active">
+					<td>${userbilling.name}</td>
+					<td>${userbilling.cardtype.name} ending in ${userbilling.number[-4:]}</td>
+				</tr>
+		</tbody>
+	</table>
+
+<br>
+<br>
+
+<h3>Your Order Details</h3>
+	<table class = "table table-striped table-hover">
+		<thead>
+			<tr class="success">
+				<th>Order Total</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr class="active">
+				<td><&nbsp<&nbsp<&nbsp<&nbsp${totalcharged}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!--FIXED-->
+
+
+<div class="actions">
+<br />
+
+</div>
+</form>
+
+<br />
+<br />
+<br />
+
+<br />
+<br />
+<br />
+
+<br />
+<br />
+<br />
+
+ <!--footer-->
+
+<div class="row footer">
+  
+    <div class="span6">
+    
+      <ul class="footer-nav">
+       <li><a href="/shop/terms">Terms &amp; Conditions</a></li>
+        <li><a href="/shop/about">About Us</a></li>
+        <li><a href="/shop/contact">Contact</a></li>
+      </ul>
+    
+    </div>
+  
+    <div class="span6 footer-right">
+    
+      <p>
+        &copy; HexPhotos
+      </p>
+    
+    </div>
+  
+  </div>
+  
+</div>
+
+
+    
+  </div>
+<!--FIXED-->
+
+ </%block>

@@ -1,0 +1,220 @@
+<%inherit file="base.htm" />
+
+<%block name="content">
+<h1>Checkout</h1>
+%if badcard == True:
+<span style="color:#ff0000;">The card you provided was not valid</span>
+%endif
+<br>
+<form action="/shop/completeorder/" method="POST">
+
+
+<h3>Your Items</h3>
+	
+
+<div class="row">
+	
+		<div class="span12">
+			
+			<table class="basket-table">
+				<thead>
+					<tr>
+						<th colspan="2">Item</th>
+						<th>Qty</th>
+						<th>Price</th>
+						<th colspan="2">Total</th>
+					</tr>
+				</thead>
+				%for product in Objects:
+				<tbody>
+					<tr>
+						<td class="image"><a href="/shop/details/${product.id}/"><img src="${ STATIC_URL}${product.imagePath}" alt="" /></a></td>
+						<td class="title"><a href="/shop/details/${product.id}/">${product.name}</a></td>
+						<td class="qty">${Objects[product]}</td>						
+						<td class="price">$${product.price}</td>
+						<td class="total">$${product.price}</td>
+						<td class="remove"><a href="/shop/cart/remove/${product.id}"><span class="entypo trash"></span></a></td>
+					</tr>
+					
+				</tbody>
+				%endfor
+			</table>
+			
+			</div>
+			</div>
+
+<br>
+%if needBilling == True:
+	<div class="alert alert-danger">
+<span style="color:#ff0000;">You must choose a valid billing option</span>
+</div>
+%endif
+<h3>Billing Information</h3>
+	<table class = "table table-striped table-hover">
+		<thead>
+			<tr class="success">
+					<th></th>
+					<th>Name on Card</th>
+					<th>Description</th>
+					<th></th>
+			</tr>
+		</thead>
+		<tbody>
+
+			%for o in billings:
+				<tr class="active">
+					<td><input type="radio" name="billing" value="${o.id}}"></td>
+					<td>${o.name}</td>
+					<td>${o.cardtype.name} ending in ${o.number[-4:]}</td>
+					<td><a href="/shop/billing_details/${o.id}/checkout">Edit</a></td>
+				</tr>
+			%endfor
+		</tbody>
+	</table>
+	<a href="/shop/billing_details/checkout" class="btn btn-primary"><span class="entypo-card"></span>New Billing Option</a>
+
+<br>
+<br>
+%if needShipping == True:
+	<div class="alert alert-danger">
+<span style="color:#ff0000;">Shipping information missing, select or add a shipping address.</span>
+</div>
+%endif
+<h3>Shipping Information</h3>
+	<table class = "table table-striped table-hover">
+		<thead>
+			<tr class="success">
+				<th></th>
+				%for value in shippingobject.customer():
+					<th>${value.key}</th>
+				%endfor
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			%for o in shippings:
+				<tr class="active">
+					<td><input type="radio" name="shipping" value="${o.id}}"></td>
+					%for value in o.customer():
+						<td>${value.value}</td>
+					%endfor
+					<td><a href="/shop/shipping_details/${o.id}/checkout">Edit</a></td>
+				</tr>
+			%endfor
+		</tbody>
+	</table>
+	<a href="/shop/shipping_details/checkout" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span>New Shipping Address</a>
+<br>
+<br>
+<p></p>
+%if needOption == True:
+	<div class="alert alert-danger">
+<span style="color:#ff0000;">You must choose a valid shipping option</span>
+</div>
+%endif
+<h3>Shipping Options</h3>
+	<table class = "table table-striped table-hover">
+		<thead>
+			<tr class="success">
+					<th></th>
+					<th>Option</th>
+					<th>Price</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			%for o in shippingoptions:
+				<tr class="active">
+					<td><input type="radio" name="shippingoptions" value="${o.id}}"></td>
+					<td>${o.daystoarrive}-Day Shipping</td>
+				
+				%if o.price == 0:
+					<td>Free!</td>
+				%else:	
+					<td>$${o.price}</td>
+				%endif
+				</tr>
+			%endfor
+		</tbody>
+	</table>
+<br>
+
+
+
+<h3>Your Order Details</h3>
+	<table class = "basket-table">
+		<thead>
+			<tr>
+				<th colspan="6"></th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr>
+				<td class="image"></td>
+				<td class="title"><a href="#">Total before shipping and tax</a></td>
+				<td class="qty"></td>						
+				<td class="price"></td>
+				<td class="total">       $${subtotal}</td>
+				<td class="remove"></td>
+
+			</tr>
+		</tbody>
+	</table>
+
+
+
+
+	<!--FIXED-->
+
+
+<div class="actions">
+<br />
+<a class="btn btn-blank" href="/shop/index">Continue Shopping</a>
+<button type="submit" class="btn btn-primary">Complete Order</button>
+</div>
+</form>
+
+<br />
+<br />
+<br />
+
+<br />
+<br />
+<br />
+
+<br />
+<br />
+<br />
+
+ <!--footer-->
+
+<div class="row footer">
+  
+    <div class="span6">
+    
+      <ul class="footer-nav">
+        <li><a href="content.html">Terms &amp; Conditions</a></li>
+        <li><a href="content.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    
+    </div>
+  
+    <div class="span6 footer-right">
+    
+      <p>
+        &copy; HexPhotos
+      </p>
+    
+    </div>
+  
+  </div>
+  
+</div>
+
+
+    
+  </div>
+<!--FIXED-->
+ </%block>

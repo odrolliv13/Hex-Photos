@@ -1,0 +1,38 @@
+#ServerRoot needs to point to the location of Apache on the System. 
+#ServerRoot "c:/Users/Administrator/CustomApache/Apache24"
+
+#HostnameLookups allows the server to check hostnames
+HostnameLookups On
+
+#Listen specifies the address and port on which Apache responds
+Listen 104.131.184.216:80
+
+#This line loads mod_wsgi into Apache, allowing Django to work
+LoadModule wsgi_module /usr/lib/apache2/modules/mod_wsgi.so
+
+#ServerAdmin should be the address of the admin
+ServerAdmin admin@example.com
+
+#ServerName needs to be the Domain Name and port of the website
+ServerName www.djuvo.com:80
+
+#This directory points to the location of the Apache configuration
+<Directory "/etc/apache2/">
+    AllowOverride None
+    Options None
+    Require all granted
+</Directory>
+
+#This needs to point to the location of the wsgi.py file found in mysite in Django-Mako-Plus projects
+WSGIScriptAlias / /var/www/HexPhotos/mysite/wsgi.py
+
+#This needs to point to the project
+WSGIPythonPath /var/www/HexPhotos
+
+#This directory points to the project
+<Directory /var/www/HexPhotos>
+Require all granted
+</Directory>
+
+#This sets the static folder where media is stored on the server
+Alias /static /var/www/HexPhotos

@@ -1,0 +1,11 @@
+﻿## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+ 
+<%block name="content">
+	<center>
+	<h2>The item has been checked out.</h2>
+	<h3>The return date is ${str(rental.expected_date.strftime('%b %d, %Y'),)}
+	<br>The expected price before taxes is: $${rental.days_to_rent * rental.daily_rate}</h3>
+</center>
+ </%block>

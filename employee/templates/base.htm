@@ -1,0 +1,124 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base_template2.htm" />
+
+
+ <%block name ="user">
+    
+ 
+
+</%block>
+
+ <%block name ="menu">
+
+
+</%block>
+
+<%block name = "top_menu">
+
+<div class="container">
+  
+  <!-- Site Top -->
+  
+  <div class="row">
+  
+    <div class="span12">
+    
+      <ul class="top-nav">
+
+
+
+        <li class="dropdown">
+
+    %if request.user.is_authenticated():
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Welcome, ${request.user.username}</strong><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="/shop/account"><span class="entypo user"></span> Account</a></li>
+      %if request.user.is_superuser == True or request.user.is_staff == True:
+      <li><a href="/shop/index">Retail</a></li>
+      <li><a href="/manager/index">Management</a></li>
+      <li><a href="/employee/index">Cashier</a></li>
+     %endif 
+      <li class="divider"></li>
+      <li><a href="/shop/logout" class="navbar-link">  Logout  </a></li>
+    
+    %else:
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Your Account</strong><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a id = "login_button">Login<span class="glyphicon glyphicon-log-in"></span></a></li>
+    
+
+    </ul>
+   </li>
+        <li><a href="/shop/new_customer"><strong>Sign Up</strong></a></li>
+        %endif 
+        
+      </ul>
+    
+    </div>
+  
+  </div>
+  
+  <!-- Header -->
+  
+  <div class="row">
+  
+    <div class="span4">
+    
+
+       
+
+    
+    </div>
+  
+    <div class="span4">
+    
+      <img src="${ STATIC_URL }base_app/images/logo.png"/>
+    
+    </div>
+  
+    
+  
+  </div>
+  
+  <!-- Menu -->
+  
+  <div class="row">
+    
+    <div class="span12">
+    
+      <ul class="main-nav clearfix">
+
+        <li><a href="/employee/index">HexPhotos</a></li>
+       
+      <form class="navbar-form" role="search" action = "/shop/search/">
+         <div class="input-group">
+      
+        <input type="text" class="form-control" placeholder="Search" name= "search">
+        </div>
+        </form>
+
+
+    <!--from original code-->
+      </ul>
+    
+    </div>
+    
+  </div>
+
+
+
+
+      </%block>
+
+<!--footer-->
+
+<%block name="footer">
+
+<div class="container">
+
+
+</div>
+</%block>
+
+
+

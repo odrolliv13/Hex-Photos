@@ -1,0 +1,49 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+<%block name="title">
+   <h3>Stores</h3>
+ </%block>
+
+<%block name="content">
+	<div class="buttons">
+		<a href="/manager/store_details/new/"button type="button" class="btn btn-primary">New</a>
+  		<a href="/manager/stores" type="button" class="btn btn-primary">Current</a>
+  		<a href="/manager/stores/deleted"button type="button" class="btn btn-blank">Deleted</a>
+	</div>
+	<table class = "table table-striped table-hover">
+		<thead>
+			<tr class="success">
+				%for key in Object.info():
+					<th>${key.key}</th>
+				%endfor
+				<th>Manager</th>
+				%if Deleted == False:
+				<th></th>
+				<th></th>
+				%endif
+			</tr>
+		</thead>
+		<tbody>
+				%for o in Objects:
+				<tr class="active">
+					%for value in o.info():
+						<td>${value.value}</td>
+					%endfor
+					<td>
+					%try:
+					${o.manager.username}
+					%except:
+					Not assigned
+					%endtry
+					</td>
+					%if Deleted == False:
+					<td><a href="/manager/store_details/${o.id}/"><span class="entypo pencil"></span></a></td>
+					<td><a href="/manager/stores/delete/${o.id}/"><span class="entypo trash"></span></a></td>
+					%endif
+				</tr>
+				%endfor
+		</tbody>
+	</table>
+
+ </%block>

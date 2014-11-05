@@ -1,0 +1,50 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+<%block name="title">
+  Stores
+ </%block>
+
+<%block name="content">
+
+	<div class="btn-group">
+		<a href="/manager/user_details/new/"button type="button" class="btn btn-default">New</a>
+  		<a href="/manager/users" type="button" class="btn btn-default">Current</a>
+  		<a href="/manager/users/deleted"button type="button" class="btn btn-default">Deleted</a>
+	</div>
+	<table class = "table table-striped table-hover">
+		<thead>
+			<tr class="success">
+				%for key in Object.info():
+					<th>${key.key}</th>
+				%endfor
+				
+				%if request.user.is_superuser == True:
+				%if Deleted == False:
+				<th></th>
+				<th></th>
+				%endif
+				%endif
+			
+			</tr>
+		</thead>
+		<tbody>
+				%for o in Objects:
+				<tr class="active">
+					%for value in o.info():
+						<td>${value.value}</td>
+					%endfor
+					
+					%if request.user.is_superuser == True:
+						%if Deleted == False:
+					<td><a href="/manager/user_details/${o.id}/">Edit</a></td>
+					<td><a href="/manager/users/delete/${o.id}/">Delete</a></td>
+						%endif
+					%endif
+					
+				</tr>
+				%endfor
+		</tbody>
+	</table>
+
+ </%block>

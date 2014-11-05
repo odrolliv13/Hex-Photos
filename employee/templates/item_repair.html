@@ -1,0 +1,14 @@
+﻿## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+<%block name="title">
+  
+ </%block>
+ 
+<%block name="content">
+	<center>
+	<h1>The item has been checked in for repair.</h1>
+	<h3>The expected price is $${repair.estimate}</h3>
+	
+</center>	
+ </%block>

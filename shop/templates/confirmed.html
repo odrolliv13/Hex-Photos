@@ -1,0 +1,14 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+<%block name="content">
+<h1>Confirmation</h3>
+  <center>
+  <br>
+  %if confirmed == True:
+  	<h3>Your account has been confirmed. Thank you!</h3>
+  %else:
+  	<h3>Your account still needs to be confirmed. Click <a href="/shop/confirmation">here</a> to resend a confirmation email.</h3>
+  %endif
+  </center>
+</%block>

@@ -1,0 +1,82 @@
+﻿## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+<%block name="title">
+  
+ </%block>
+ 
+<%block name="content">
+<br>
+	%if allcatalog == True:
+	%for o in Objects:
+	
+
+	<div class="span4 product-listing">
+    
+      <p class="title"><a href="${o.url}">${o.name}</a></p>
+      
+      <a href="${o.url}"><img class="image" src="${ STATIC_URL}${o.imagePath}" alt="Ibiza Lips" /></a>
+      
+      <p class="price">
+        
+        <a class="btn btn-view btn-grey" href="${o.url}"><span class="entypo search"></span></a>
+      </p>
+      
+    </div>
+
+	%endfor
+	%else:
+	%if results == True and rental == False:
+	
+	<h2>${Category.name}</h2>
+	<br>	
+	%for o in Objects:
+	
+	
+	<div class="span4 product-listing">
+    
+      <p class="title"><a href="/shop/details/${o.id}/">${o.name}</a></p>
+      
+      <a href="/shop/details/${o.id}/"><img class="image" src="${ STATIC_URL}${o.imagePath}" alt="Ibiza Lips" /></a>
+      <p class "brand">
+      <span style="font-size:16px;">${o.brand}</span> 
+      </p>
+      <p class="price">
+        $${o.price}
+        <a class="btn btn-addcart btn-primary" href="/shop/add/${o.id}"><span class="entypo cart"></span></a><a class="btn btn-view btn-grey" href="/shop/details/${o.id}/"><span class="entypo search"></span></a>
+      </p>
+      
+    </div>
+    
+    %endfor
+
+
+
+
+	%elif rental == True:
+	<h2>${Category.name}</h2>
+	%for o in Objects:
+	
+	<div class="span4 product-listing">
+    
+      <p class="title"><a href="/shop/details/r${o.id}/">${o.name}</a></p>
+      
+      <a href="/shop/details/r${o.id}/"><img class="image" src="${ STATIC_URL}${o.imagePath}" alt="Ibiza Lips" /></a>
+      <p class "brand">
+      <span style="font-size:16px;">${o.brand}</span> 
+      </p>
+      <p class="price">
+       <span style="font-size:16px;">Daily rate:</span> $${o.rentalPrice}
+        <a class="btn btn-view btn-primary" href="/shop/details/r${o.id}/"><span class="entypo search"></span></a>
+      </p>
+      
+    </div>
+
+	%endfor
+	%else:
+	<center>
+	<h2>There are no items matching that.</h2>
+	</center>
+	%endif
+	%endif
+ </%block>

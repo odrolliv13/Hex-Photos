@@ -1,0 +1,43 @@
+﻿## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+<%block name="title">
+<br>
+  <h2>Search Results</h2>
+ </%block>
+ 
+<%block name="content">
+<br>
+<br>
+	%if search == True:
+		%if results == False:
+			<center>
+			There are no results for that search.
+			</center>
+		%endif
+		%for o in Objects:
+		
+<div class="span4 product-listing">
+    
+      <p class="title"><a href="/shop/details/${o.id}/">${o.name}</a></p>
+      
+      <a href="/shop/details/${o.id}/"><img class="image" src="${ STATIC_URL}${o.imagePath}"   alt="Ibiza Lips" /></a>
+      <p class "brand">
+      <span style="font-size:16px;">${o.brand}</span> 
+      </p>
+      <p class="price">
+       $${o.price}
+        <a class="btn btn-addcart btn-primary" href="/shop/add/${o.id}"><span class="entypo cart"></span></a><a class="btn btn-view btn-grey" href="/shop/details/${o.id}/"><span class="entypo search"></span></a>
+      </p>
+      
+    </div>
+
+		%endfor
+	%else:
+	<br>
+	<br>
+		<center>
+		You might want to search for something.
+		</center>
+	%endif
+ </%block>

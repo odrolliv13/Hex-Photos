@@ -1,0 +1,30 @@
+/* 
+  Static CSS for the base.html page goes here.  Since base.html is the common ancestor of all templates of all apps on our site,
+  CSS included here will be placed on *every* page of the site.
+*/
+
+html, body {
+background: #cedce7; /* Old browsers */
+background: -moz-linear-gradient(left, #cedce7 17%, #596a72 84%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(17%,#cedce7), color-stop(84%,#596a72)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #cedce7 17%,#596a72 84%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #cedce7 17%,#596a72 84%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #cedce7 17%,#596a72 84%); /* IE10+ */
+background: linear-gradient(to right, #cedce7 17%,#596a72 84%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedce7', endColorstr='#596a72',GradientType=1 ); /* IE6-9 */
+header {
+  text-align: center;
+}
+
+
+.table tbody .active td img{
+
+height: 50px; 
+width: 50px;
+}
+
+a.thumbnail:hover {
+    text-decoration: none;
+}
+
+

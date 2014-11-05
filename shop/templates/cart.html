@@ -1,0 +1,73 @@
+﻿## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+<%block name="title">
+  <h1>Your Cart</h1>
+ </%block>
+ 
+<%block name="content">
+
+<!-- Basket -->
+	%if empty == False:
+	<div class="row">
+	
+		<div class="span12">
+			
+			<table class="basket-table">
+				<thead>
+					<tr>
+						<th colspan="2">Item</th>
+						<th>Qty</th>
+						<th>Price</th>
+						<th colspan="2">Total</th>
+					</tr>
+				</thead>
+				%for product in Objects:
+				<tbody>
+					<tr>
+						<td class="image"><a href="/shop/details/${product.id}/"><img src="${ STATIC_URL}${product.imagePath}" alt="Ibiza Lips" /></a></td>
+						<td class="title"><a href="/shop/details/${product.id}/">${product.name}</a></td>
+						<td class="qty">${Objects[product]}</td>
+						<td class="price">$${product.price}</td>
+						<td class="total">$${product.price}</td>
+						<td class="remove"><a href="/shop/cart/remove/${product.id}"><span class="entypo trash"></span></a></td>
+					</tr>
+					
+				</tbody>
+				%endfor
+			</table>
+			
+			<div class="clearfix">
+			
+			<p class="basket-total"><span>Subtotal:</span> $${subtotal}</p>
+			
+			</div>
+			
+			
+
+
+			<p class="actions">
+				<a class="btn btn-blank" href="/shop/index">Continue Shopping</a>
+				<!--<a class="btn btn-blank" href="basket.html">Empty Basket</a>-->
+				<!--<a class="btn btn-blank" href="basket.html">Update Cart</a>-->
+				<a class="btn btn-primary" href="/shop/checkout/">Continue to Checkout</a>
+			</p>
+
+
+
+	%else:
+		<center>
+		<h2>You currently have no items in your cart.</h2>
+
+			<p class="actions">
+			<a class="btn btn-primary" href="/shop/index">Continue Shopping</a>
+			</p>
+		</center>
+	%endif
+
+	
+			
+		</div>
+	
+	</div>
+ </%block>

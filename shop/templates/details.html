@@ -1,0 +1,97 @@
+﻿## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+<%block name="title">
+  
+ </%block>
+ 
+<%block name="content">
+
+
+	<div class="row">
+		
+		<div class="span12">
+		
+			<h1>${product.name}</h1>
+
+		
+		</div>
+		
+	</div>
+<div class="row">
+	
+		<div class="span8">
+		
+			<img class="product-image" src="${ STATIC_URL }${product.imagePath}" alt="" />
+			
+			<div class="row">
+			
+				<!--<div class="span2">-->
+					<!--<a href=""><img class="product-thumb" src="${ STATIC_URL }${product.imagePath}" alt="" /></a>-->
+				<!--</div>-->
+			
+				
+			
+			</div>
+			
+		</div>
+		%if rental == False:
+		<div class="span4">
+		
+			<div class="add-basket-box clearfix">
+				
+				<img src="${ STATIC_URL }${product.imagePath}" alt="" />
+				
+				<p>${product.name}<br /><span>$${product.price}</span></p>
+				<a class="btn btn-addcart btn-primary" href="/shop/add/${product.id}"><span class="entypo cart"></span></a>
+			
+			</div>
+			<p><span style="font-size:20px;">Brand: ${product.brand}</span></p>
+			<br>
+			<p><span style="font-size:16px;">${product.description}</span></p>
+			
+
+			
+
+		</div>
+	
+	</div>
+	
+
+
+
+
+
+%else:
+
+<div class="span4">
+		
+			<div class="add-basket-box clearfix">
+				
+				<img src="${ STATIC_URL }${product.imagePath}" alt="" />
+				
+				<p>${product.name}<br Daily Rate:/><span> $${product.rentalPrice}</span></p>
+				
+			
+			</div>
+			<p><span style="font-size:20px;">Brand: ${product.brand}</span></p>
+			<br>
+			<p><span style="font-size:16px;">${product.description}</span></p>
+			
+				
+			<h3>Rental Options</h3>			
+			<li><span style="font-size:18px;">Call: <strong>1-800-HexPhotos</strong></span></li> 
+			 <li> <span style="font-size:18px;">Visit one of our stores</span></li>
+
+
+			
+			
+
+		</div>
+	
+	</div>
+	
+
+%endif
+
+ </%block>

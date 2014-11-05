@@ -1,0 +1,24 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base_ajax_template.htm" />
+<%block name="right_header">
+</%block>
+<%block name ="title">
+
+
+</%block>
+<%block name="content">
+<center>
+  <form method="POST" action='/shop/loginmodal/'>
+    <table>
+      <tbody>
+        ${ form }
+      </tbody>
+    </table>
+    <div class="btn-group">
+        <input class="btn btn-primary" type="submit" value="Login"/>
+        <a href="/shop/forgotpassword" class="btn btn-blank">Forgot your password?</a>
+        </div>
+  </form>
+  </center>
+
+</%block>

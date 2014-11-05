@@ -1,0 +1,25 @@
+﻿## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+<%block name="title">
+  Cameras
+ </%block>
+ 
+<%block name="content">
+	
+	%for o in Objects:
+	<div>
+	  <div class="col-sm-6 col-md-4">
+	    <div class="thumbnail">
+	      <img data-src="holder.js/300x200" alt="...">
+	      <div class="caption">
+	        <a href="/shop/details/${o.id}/"><h3>${o.name}</h3></a>
+	        ${o.brand}
+	        <br>$${o.price}
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	%endfor
+
+ </%block>

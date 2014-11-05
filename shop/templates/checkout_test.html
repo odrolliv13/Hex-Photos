@@ -1,0 +1,101 @@
+<%inherit file="base.htm" />
+
+<%block name="content">
+<h3>Checkout</h3>
+
+<p>
+Your Ordered Items
+	<table class = "table table-striped table-hover">
+		<thead>
+			<tr class="success">
+				<th>Product</th>
+				<th>Cost</th>
+				<th>Quantity</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="active">
+				<td>Batteries</td>
+				<td>$1.95</td>
+				<td>5</td>
+				<td>$9.75</td>
+			</tr>
+			<tr class="active">
+				<td>Lens Cleaner</td>
+				<td>$4.99</td>
+				<td>2</td>
+				<td>$9.98</td>
+			</tr>
+			<tr class="active">
+				<td>Video Camera</td>
+				<td>$299.95</td>
+				<td>1</td>
+				<td>$299.95</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+
+<p>
+Your Order Information
+	<table class = "table table-striped table-hover">
+		<thead>
+			<tr class="success">
+				<th>Select Payment Option</th>
+				<th>Select Shipping Address</th>
+								<th>Select Shipping Option</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<form action="">
+
+
+			<tr class="active">
+				<td><input type="radio" name="sex" value="male">  MasterCard ending in 9865</td>
+								<td><input type="radio" name="sex" value="male">  Home<br><&nbsp<&nbsp<&nbsp<&nbsp1710 North 500 East<br><&nbsp<&nbsp<&nbsp<&nbspProvo, UT 84606</td>
+												<td><input type="radio" name="sex" value="male">  1-Day Shipping ( $14.95 )</td>
+			</tr>
+			<tr class="active">
+				<td><input type="radio" name="sex" value="male">  Visa ending in 7865</td>
+								<td><input type="radio" name="sex" value="male">  Office<br><&nbsp<&nbsp<&nbsp<&nbsp358 North 300 East<br><&nbsp<&nbsp<&nbsp<&nbspProvo, UT 84606</td>
+												<td><input type="radio" name="sex" value="male">  3-Day Shipping ( $8.95 )</td>
+			</tr>
+			<tr class="active">
+				<td><input type="radio" name="sex" value="male">  Gift card ending in 4563</td>
+				<td></td>
+								<td><input type="radio" name="sex" value="male">  5-Day Shipping ( FREE )</td>
+			</tr>
+			<tr class="active">
+				<td><a href="">New Payment Option</a></td>
+								<td><a href="">New Shipping Address</a></td>
+								<td></td>
+			</tr>
+			</form>
+
+		</tbody>
+	</table>
+
+
+Your Order Details
+	<table class = "table table-striped table-hover">
+		<thead>
+			<tr class="success">
+				<th>Estimated Arrival</th>
+				<th>Order Total</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<form action="">
+			<tr class="active">
+				<td><&nbsp<&nbsp<&nbsp<&nbspMarch 17th, 2014</td>
+				<td><&nbsp<&nbsp<&nbsp<&nbsp$319.68</td>
+			</tr>
+		</tbody>
+	</table>
+
+<a href="" button type="button" class="btn btn-default">Checkout</a>
+ </%block>

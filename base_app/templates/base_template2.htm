@@ -1,0 +1,64 @@
+## this is the skeleton of all pages on our site - it defines the basic structure with our menus, sidebars, etc.
+## by naming this file with .htm, it can't be viewed directly (urls.py only allows full .html)
+
+## set up a StaticRenderer object to enable the CSS/JS automatic inclusion magic.
+<%! from base_app import static_files %>
+<%  static_renderer = static_files.StaticRenderer(self) %>
+
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+  <head>
+    <title>Hex Photos</title>
+    <script src="/static/base_app/scripts/jquery.js"></script>
+    <link rel="stylesheet" href="/static/base_app/styles/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/base_app/styles/bootstrap.css"/>
+    <link href="/static/base_app/styles/686tees.css" rel="stylesheet" type="text/css" />
+    <link href="/static/base_app/styles/entypo.css" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css" />
+    <script src ="/static/base_app/scripts/bootstrap.js"></script>
+    <script src ="/static/base_app/scripts/jquery.form.js"></script>
+    <script src ="/static/base_app/scripts/jquery.loadmodal.js"></script>
+
+
+
+
+    <%block name="head_section">
+
+    </%block>
+
+    ## render the css
+    ${ static_renderer.get_template_css(request, context)  }
+  
+  </head>
+  <body>
+  
+      <%block name = "menu">
+      </%block>
+      <%block name = "user">
+      </%block>
+     
+  
+  
+        
+        <%block name = "top_menu">
+       
+      </%block>
+      
+     <%block name="title">
+  
+ </%block>   
+
+    
+    <%block name="content">
+      Site content goes here in sub-templates.
+    </%block>  
+    
+    <%block name="footer">
+    </%block>
+  
+    ## render the JS for this page (placed here at the end because browsers apparently load faster when JS is at the end)
+    ${ static_renderer.get_template_js(request, context)  }
+  
+  </body>
+</html>
