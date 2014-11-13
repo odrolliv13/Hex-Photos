@@ -143,7 +143,7 @@ def process_request(request):
 
 		message = user.first_name + " " + user.last_name + ":\r\n" + "We have received a payment of $" + str(cash.amount) + " for the following items:\r\n" + items + "\r\nThank you!\r\n\r\nHexPhotos"
 		
-		send_mail('HexPhotos Payment Received', message, 'no-reply@hexphotos.com', [user.email], fail_silently=False)
+		send_mail('HexPhotos Payment Received', message, 'hexphotos.byu@gmail.com', [user.email], fail_silently=False)
 
 
 		EndDate = datetime.date.today() + datetime.timedelta(days=useroption.daystoarrive)

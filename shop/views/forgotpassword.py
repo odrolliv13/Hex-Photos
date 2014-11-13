@@ -29,11 +29,11 @@ def process_request(request):
 			user.resetlink = link
 			user.resetdate = date
 			user.save()
-			html = "<html><body></body>Please click <a href=\"http://www.hexphotos.com/shop/resetpassword/" + str(user.id) +"/" + str(user.resetlink) + "\">here</a> to reset your password. This reset link will expire in 2 hours.<br>Thank you!<br>HexPhotos</html>"
+			html = "<html><body></body>Please click <a href=\"http://www.djuvo.com/shop/resetpassword/" + str(user.id) +"/" + str(user.resetlink) + "\">here</a> to reset your password. This reset link will expire in 2 hours.<br>Thank you!<br>HexPhotos</html>"
 			message = "/shop/resetpassword/" + str(user.id) +"/" + str(user.resetlink)
 			message = html
 
-			msg = EmailMultiAlternatives('HexPhotos Password Reset', message, 'no-reply@hexphotos.com', [user.email])
+			msg = EmailMultiAlternatives('HexPhotos Password Reset', message, 'hexphotos.byu@gmail.com', [user.email])
 			msg.attach_alternative(html, "text/html")
 			msg.send()
 

@@ -48,11 +48,11 @@ def process_request(request):
 			validcard.save()
 
 			#the following lines generate an emial that is sent to the customer to confirm account
-			html = "<html><body></body>Please click <a href=\"http://www.hexphotos.com/shop/confirmed/" + str(user.id) +"/" + str(user.confirmedlink) + "\">here</a> to verify your account.<br>Thank you!<br>HexPhotos</html>"
+			html = "<html><body></body>Please click <a href=\"http://www.djuvo.com/shop/confirmed/" + str(user.id) +"/" + str(user.confirmedlink) + "\">here</a> to verify your account.<br>Thank you!<br>HexPhotos</html>"
 			message = "/shop/confirmed/" + str(user.id) +"/" + str(user.confirmedlink)
 			message = html
 
-			msg = EmailMultiAlternatives('HexPhotos Confirmation Email', message, 'no-reply@hexphotos.com', [user.email])
+			msg = EmailMultiAlternatives('HexPhotos Confirmation Email', message, 'hexphotos.byu@gmail.com', [user.email])
 			msg.attach_alternative(html, "text/html")
 			msg.send()
 

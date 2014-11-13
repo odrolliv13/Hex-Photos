@@ -19,11 +19,11 @@ def process_request(request):
 	request.user.save()
 
 	#here the email format is generated with the link to return to the app
-	html = "<html><body></body>Please click <a href=\"http://www.hexphotos.com/shop/confirmed/" + str(request.user.id) +"/" + str(request.user.confirmedlink) + "\">here</a> to verify your account.<br>Thank you!<br>HexPhotos</html>"
+	html = "<html><body></body>Please click <a href=\"http://www.djuvo.com/shop/confirmed/" + str(request.user.id) +"/" + str(request.user.confirmedlink) + "\">here</a> to verify your account.<br>Thank you!<br>HexPhotos</html>"
 	message = "/shop/confirmed/" + str(request.user.id) +"/" + str(request.user.confirmedlink)
 	message = html
 
-	msg = EmailMultiAlternatives('HexPhotos Confirmation Email', message, 'no-reply@hexphotos.com', [request.user.email])
+	msg = EmailMultiAlternatives('HexPhotos Confirmation Email', message, 'hexphotos.byu@gmail.com', [request.user.email])
 	msg.attach_alternative(html, "text/html")
 	msg.send()
 
