@@ -26,9 +26,13 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'www.djuvo.com']
 
-EMAIL_HOST = 'gateway.byu.edu'
-EMAIL_PORT = 25
-
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'hexphotos.byu@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = 'hexphotos.byu@gmail.com'
+SERVER_EMAIL = 'hexphotos.byu@gmail.com'
 
 # Application definition
 
