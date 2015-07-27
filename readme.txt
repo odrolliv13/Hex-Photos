@@ -9,3 +9,6 @@ The contributors were:
 	Andres De Hoyos		adehoyos.g@gmail.com
 	Oscar Villordo		villordooscar@gmail.com
 	Ben Mackley		benjaminmackley@gmail.com		
+
+This repository can also be found at: 
+https://github.com/stuartaroth/HexPhotos
